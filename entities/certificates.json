@@ -1,0 +1,57 @@
+{
+  "fields": [
+    {
+      "id": {
+        "type": "string",
+        "uuid": true,
+        "auto": true
+      }
+    },
+    {
+      "created_at": {
+        "type": "integer",
+        "timestamp": true,
+        "auto": true
+      }
+    },
+    {
+      "cert": {
+        "required": true,
+        "referenceable": true,
+        "type": "string"
+      }
+    },
+    {
+      "key": {
+        "required": true,
+        "encrypted": true,
+        "referenceable": true,
+        "type": "string"
+      }
+    },
+    {
+      "cert_alt": {
+        "required": false,
+        "referenceable": true,
+        "type": "string"
+      }
+    },
+    {
+      "key_alt": {
+        "required": false,
+        "encrypted": true,
+        "referenceable": true,
+        "type": "string"
+      }
+    },
+    {
+      "tags": {
+        "type": "set",
+        "elements": {
+          "type": "string",
+          "required": true
+        }
+      }
+    }
+  ]
+}

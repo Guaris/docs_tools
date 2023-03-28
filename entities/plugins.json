@@ -1,0 +1,135 @@
+{
+  "fields": [
+    {
+      "id": {
+        "type": "string",
+        "auto": true,
+        "len_min": 1,
+        "uuid": true
+      }
+    },
+    {
+      "name": {
+        "type": "string",
+        "indexed": true,
+        "len_min": 1,
+        "required": true
+      }
+    },
+    {
+      "instance_name": {
+        "type": "string",
+        "unique": true
+      }
+    },
+    {
+      "created_at": {
+        "type": "integer",
+        "timestamp": true,
+        "auto": true
+      }
+    },
+    {
+      "route": {
+        "on_delete": "cascade",
+        "default": null,
+        "type": "foreign",
+        "reference": "routes"
+      }
+    },
+    {
+      "service": {
+        "on_delete": "cascade",
+        "default": null,
+        "type": "foreign",
+        "reference": "services"
+      }
+    },
+    {
+      "consumer": {
+        "on_delete": "cascade",
+        "default": null,
+        "type": "foreign",
+        "reference": "consumers"
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "abstract": true
+      }
+    },
+    {
+      "protocols": {
+        "type": "set",
+        "elements": {
+          "type": "string",
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https",
+            "tcp",
+            "tls",
+            "tls_passthrough",
+            "udp",
+            "ws",
+            "wss"
+          ]
+        },
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "required": true
+      }
+    },
+    {
+      "enabled": {
+        "type": "boolean",
+        "indexed": true,
+        "default": true,
+        "required": true
+      }
+    },
+    {
+      "tags": {
+        "type": "set",
+        "elements": {
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    {
+      "ordering": {
+        "type": "map",
+        "keys": {
+          "type": "string",
+          "one_of": [
+            "before",
+            "after"
+          ]
+        },
+        "values": {
+          "type": "map",
+          "keys": {
+            "type": "string",
+            "one_of": [
+              "access"
+            ]
+          },
+          "values": {
+            "type": "array",
+            "elements": {
+              "type": "string",
+              "unique": true
+            }
+          }
+        }
+      }
+    }
+  ]
+}

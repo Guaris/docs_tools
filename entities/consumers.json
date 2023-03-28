@@ -1,0 +1,56 @@
+{
+  "fields": [
+    {
+      "id": {
+        "type": "string",
+        "uuid": true,
+        "auto": true
+      }
+    },
+    {
+      "created_at": {
+        "type": "integer",
+        "timestamp": true,
+        "auto": true
+      }
+    },
+    {
+      "username": {
+        "type": "string",
+        "indexed": true,
+        "unique": true
+      }
+    },
+    {
+      "username_lower": {
+        "type": "string",
+        "db_export": false,
+        "prefix_ws": true
+      }
+    },
+    {
+      "custom_id": {
+        "type": "string",
+        "indexed": true,
+        "unique": true
+      }
+    },
+    {
+      "type": {
+        "required": true,
+        "indexed": true,
+        "default": 0,
+        "type": "integer"
+      }
+    },
+    {
+      "tags": {
+        "type": "set",
+        "elements": {
+          "type": "string",
+          "required": true
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "fields": [
+    {
+      "id": {
+        "type": "string",
+        "uuid": true,
+        "auto": true
+      }
+    },
+    {
+      "created_at": {
+        "type": "integer",
+        "timestamp": true,
+        "auto": true
+      }
+    },
+    {
+      "name": {
+        "type": "string",
+        "indexed": true,
+        "unique": true,
+        "required": true
+      }
+    },
+    {
+      "tags": {
+        "type": "set",
+        "elements": {
+          "type": "string",
+          "required": true
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,172 @@
+{
+  "fields": [
+    {
+      "id": {
+        "type": "string",
+        "auto": true,
+        "len_min": 1,
+        "uuid": true
+      }
+    },
+    {
+      "created_at": {
+        "type": "integer",
+        "timestamp": true,
+        "auto": true
+      }
+    },
+    {
+      "updated_at": {
+        "type": "integer",
+        "timestamp": true,
+        "auto": true
+      }
+    },
+    {
+      "name": {
+        "type": "string",
+        "indexed": true,
+        "unique": true
+      }
+    },
+    {
+      "retries": {
+        "type": "integer",
+        "default": 5,
+        "between": [
+          0,
+          32767
+        ]
+      }
+    },
+    {
+      "protocol": {
+        "one_of": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https",
+          "tcp",
+          "tls",
+          "tls_passthrough",
+          "udp",
+          "ws",
+          "wss"
+        ],
+        "default": "http",
+        "required": true,
+        "indexed": true,
+        "type": "string"
+      }
+    },
+    {
+      "host": {
+        "required": true,
+        "indexed": true,
+        "type": "string"
+      }
+    },
+    {
+      "port": {
+        "default": 80,
+        "required": true,
+        "indexed": true,
+        "between": [
+          0,
+          65535
+        ],
+        "type": "integer"
+      }
+    },
+    {
+      "path": {
+        "type": "string",
+        "match_none": [
+          {
+            "err": "must not have empty segments",
+            "pattern": "//"
+          }
+        ],
+        "indexed": true,
+        "starts_with": "/"
+      }
+    },
+    {
+      "connect_timeout": {
+        "type": "integer",
+        "default": 60000,
+        "between": [
+          1,
+          2147483646
+        ]
+      }
+    },
+    {
+      "write_timeout": {
+        "type": "integer",
+        "default": 60000,
+        "between": [
+          1,
+          2147483646
+        ]
+      }
+    },
+    {
+      "read_timeout": {
+        "type": "integer",
+        "default": 60000,
+        "between": [
+          1,
+          2147483646
+        ]
+      }
+    },
+    {
+      "tags": {
+        "type": "set",
+        "elements": {
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    {
+      "client_certificate": {
+        "type": "foreign",
+        "reference": "certificates"
+      }
+    },
+    {
+      "tls_verify": {
+        "type": "boolean"
+      }
+    },
+    {
+      "tls_verify_depth": {
+        "type": "integer",
+        "default": null,
+        "between": [
+          0,
+          64
+        ]
+      }
+    },
+    {
+      "ca_certificates": {
+        "type": "array",
+        "elements": {
+          "type": "string",
+          "uuid": true
+        }
+      }
+    },
+    {
+      "enabled": {
+        "type": "boolean",
+        "indexed": true,
+        "default": true,
+        "required": true
+      }
+    }
+  ]
+}

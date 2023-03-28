@@ -1,0 +1,12 @@
+certificates:
+- description: "test test are abstractions of of individual upstream services. Examples\
+    \ of Services would be a data transformation microservice, a billing API, etc.\n\
+    \  - [Documentation](https://docs.konghq.com/gateway/latest/admin-api/#service-object)"
+consumers:
+- description: "Service entities are abstractions of of individual upstream services.\
+    \ Examples of Services would be a data transformation microservice, a billing\
+    \ API, etc.\n  - [Documentation](https://docs.konghq.com/gateway/latest/admin-api/#service-object)"
+services:
+- description: "Service entities are abstractions of of individual upstream services.\
+    \ Examples of Services would be a data transformation microservice, a billing\
+    \ API, etc.\n  - [Documentation](https://docs.konghq.com/gateway/latest/admin-api/#service-object)"

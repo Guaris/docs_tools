@@ -1,0 +1,43 @@
+{
+  "fields": [
+    {
+      "id": {
+        "type": "string",
+        "uuid": true,
+        "auto": true
+      }
+    },
+    {
+      "name": {
+        "unique": true,
+        "required": true,
+        "unique_across_ws": true,
+        "type": "string",
+        "indexed": true
+      }
+    },
+    {
+      "created_at": {
+        "type": "integer",
+        "timestamp": true,
+        "auto": true
+      }
+    },
+    {
+      "tags": {
+        "type": "set",
+        "elements": {
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    {
+      "certificate": {
+        "type": "foreign",
+        "reference": "certificates",
+        "required": true
+      }
+    }
+  ]
+}

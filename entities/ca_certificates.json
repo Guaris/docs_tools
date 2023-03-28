@@ -1,0 +1,39 @@
+{
+  "fields": [
+    {
+      "id": {
+        "type": "string",
+        "uuid": true,
+        "auto": true
+      }
+    },
+    {
+      "created_at": {
+        "type": "integer",
+        "timestamp": true,
+        "auto": true
+      }
+    },
+    {
+      "cert": {
+        "required": true,
+        "type": "string"
+      }
+    },
+    {
+      "cert_digest": {
+        "type": "string",
+        "unique": true
+      }
+    },
+    {
+      "tags": {
+        "type": "set",
+        "elements": {
+          "type": "string",
+          "required": true
+        }
+      }
+    }
+  ]
+}

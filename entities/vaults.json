@@ -1,0 +1,68 @@
+{
+  "fields": [
+    {
+      "id": {
+        "type": "string",
+        "uuid": true,
+        "auto": true
+      }
+    },
+    {
+      "prefix": {
+        "not_one_of": [
+          "aws",
+          "gcp",
+          "env",
+          "hcv"
+        ],
+        "unique": true,
+        "unique_across_ws": true,
+        "required": true,
+        "indexed": true,
+        "match": "^[a-z][a-z%d-]-[a-z%d]+$",
+        "type": "string"
+      }
+    },
+    {
+      "name": {
+        "type": "string",
+        "indexed": true,
+        "required": true
+      }
+    },
+    {
+      "description": {
+        "type": "string"
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "abstract": true
+      }
+    },
+    {
+      "created_at": {
+        "type": "integer",
+        "timestamp": true,
+        "auto": true
+      }
+    },
+    {
+      "updated_at": {
+        "type": "integer",
+        "timestamp": true,
+        "auto": true
+      }
+    },
+    {
+      "tags": {
+        "type": "set",
+        "elements": {
+          "type": "string",
+          "required": true
+        }
+      }
+    }
+  ]
+}
