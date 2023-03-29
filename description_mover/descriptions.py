@@ -6,10 +6,10 @@ def insert_description(schema, json_data):
         for key, value in field.items():
             if "fields" in value:
                 schema = insert_description(schema, value)
-            elif "description" in value:
+            if "description" in value:
                 search_pattern = f"{key} = {{"
                 formatted_description = value["description"].replace("\n", "\\n").replace('"', '\\"')
-                replace_pattern = f'{key} = {{ "description": "{formatted_description}", '
+                replace_pattern = f'{key} = {{ description = "{formatted_description}", '
                 schema = schema.replace(search_pattern, replace_pattern)
             else:
                 print(f"Field '{key}' does not have a description.")
@@ -31,5 +31,3 @@ updated_schema = insert_description(lua_schema, json_data)
 
 with open("updated_schema.lua", "w") as f:
     f.write(updated_schema)
-
-print("Updated schema has been written to 'updated_schema.lua'")
